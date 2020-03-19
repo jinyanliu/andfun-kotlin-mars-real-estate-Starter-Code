@@ -34,7 +34,7 @@ class DetailViewModel(marsProperty: MarsProperty, app: Application) : AndroidVie
     val selectedProperty: LiveData<MarsProperty>
         get() = _selectedProperty
 
-    val displayPropertyPrice = Transformations.map(selectedProperty) {
+    val displayPropertyPrice: LiveData<String> = Transformations.map(selectedProperty) {
         app.applicationContext.getString(
             when (it.isRental) {
                 true -> R.string.display_price_monthly_rental
@@ -43,7 +43,7 @@ class DetailViewModel(marsProperty: MarsProperty, app: Application) : AndroidVie
         )
     }
 
-    val displayPropertyType = Transformations.map(selectedProperty) {
+    val displayPropertyType: LiveData<String> = Transformations.map(selectedProperty) {
         app.applicationContext.getString(
             R.string.display_type,
             app.applicationContext.getString(
