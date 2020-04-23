@@ -44,7 +44,8 @@ class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapt
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarsPropertyViewHolder {
-        return MarsPropertyViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context)))
+        // Important to use parent, false !!!
+        return MarsPropertyViewHolder(GridViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: MarsPropertyViewHolder, position: Int) {
@@ -58,10 +59,4 @@ class PhotoGridAdapter(private val onClickListener: OnClickListener) : ListAdapt
     class OnClickListener(val clickListener: (marsProperty: MarsProperty) -> Unit) {
         fun onClick(marsProperty: MarsProperty) = clickListener(marsProperty)
     }
-
-
-
-
-
-
 }
